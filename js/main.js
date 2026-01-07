@@ -9,29 +9,42 @@ function renderTasks() {
 
    tasks.forEach((task) => {
       const li = document.createElement("li");
-      li.textContent = task.description;
 
       if (task.completed) {
          li.classList.add("completed");
       }
 
-      li.addEventListener("click", () => {
+      const textSpan = document.createElement("span");
+      textSpan.className = "task-text";
+      textSpan.textContent = task.description;
+
+      const actionsDiv = document.createElement("div");
+      actionsDiv.className = "task-actions";
+
+      const completeBtn = document.createElement("button");
+      completeBtn.textContent = task.completed ? "Desfazer" : "Concluir";
+
+      completeBtn.addEventListener("click", () => {
          tasks = toggleTask(task.id, tasks);
          saveTasks(tasks);
          renderTasks();
       });
 
       const deleteBtn = document.createElement("button");
-      deleteBtn.textContent = "X";
+      deleteBtn.textContent = "Excluir";
 
-      deleteBtn.addEventListener("click", (e) => {
-         e.stopPropagation();
+      deleteBtn.addEventListener("click", () => {
          tasks = deleteTask(task.id, tasks);
          saveTasks(tasks);
          renderTasks();
       });
 
-      li.appendChild(deleteBtn);
+      actionsDiv.appendChild(completeBtn);
+      actionsDiv.appendChild(deleteBtn);
+
+      li.appendChild(textSpan);
+      li.appendChild(actionsDiv);
+
       taskList.appendChild(li);
    });
 }
