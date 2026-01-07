@@ -1,17 +1,18 @@
 function createTask(description) {
    return {
       id: Date.now(),
-      description: description,
+      description,
       completed: false,
+      createdAt: Date.now(),
    };
 }
 
-function toggleTask(taskId, tasks) {
-   return tasks.map((task) =>
-      task.id === taskId ? { ...task, completed: !task.completed } : task
-   );
+function toggleTask(task) {
+   task.completed = !task.completed;
+   return task;
 }
 
-function deleteTask(taskId, tasks) {
-   return tasks.filter((task) => task.id !== taskId);
+function updateTask(task, newDescription) {
+   task.description = newDescription;
+   return task;
 }
