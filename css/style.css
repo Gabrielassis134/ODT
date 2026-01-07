@@ -46,9 +46,24 @@ li {
    display: flex;
    justify-content: space-between;
    align-items: center;
+   border-radius: 4px;
 }
 
-li.completed {
+.task-text {
+   flex: 1;
+}
+
+.task-actions {
+   display: flex;
+   gap: 6px;
+}
+
+.task-actions button {
+   padding: 5px 8px;
+   cursor: pointer;
+}
+
+.completed .task-text {
    text-decoration: line-through;
    opacity: 0.6;
 }
