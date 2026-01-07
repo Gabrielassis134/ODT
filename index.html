@@ -21,6 +21,18 @@
             />
             <button type="submit">Adicionar</button>
          </form>
+         <div class="controls">
+            <select id="filter">
+               <option value="all">Todas</option>
+               <option value="pending">Pendentes</option>
+               <option value="completed">Concluídas</option>
+            </select>
+
+            <select id="order">
+               <option value="date">Data</option>
+               <option value="status">Status</option>
+            </select>
+         </div>
 
          <ul id="task-list"></ul>
       </main>
